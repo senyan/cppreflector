@@ -9,7 +9,7 @@ int main ()
   std::string s("miss");
   std::string result;
   pcrecpp::RE re("(s)$");
-  re.Replace("", &s);
+  re.Replace("(\\1)", &s);
   std::cout << s << std::endl;
 
     // try {
