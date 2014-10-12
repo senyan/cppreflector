@@ -1,13 +1,15 @@
 #include <iostream>
 #include <string>
 #include <pcrecpp.h>
-// #include <iterator>
+
+using namespace std;
 
 int main ()
 {
-  std::string s("there is a subsequence in the strings");
-  // pcrecpp::RE("(s)$").Replace("adfas", &s);
-  pcrecpp::RE("b+").Replace("d", &s);
+  std::string s("miss");
+  std::string result;
+  pcrecpp::RE re("(s)$");
+  re.Replace("", &s);
   std::cout << s << std::endl;
 
     // try {

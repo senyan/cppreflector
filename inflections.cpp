@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <utility>
-#include <regex>
+#include <pcrecpp.h>
 
 using namespace std;
 
@@ -35,8 +35,8 @@ class Inflector
   };
 
     pair<string, string> singularize_pattern_replacement[Inflector::singularize_rule_size] =  {
-      make_pair("(a|e|i|o|u)$", "")
-      // make_pair("(ss)$", "\1"),
+      make_pair("(s)$", "")
+      //make_pair("(ss)$", "\1"),
       // make_pair("(n)ews$", "\1ews"),
       // make_pair("([ti])a$", "\1um"),
       // make_pair("((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$", "\1sis"),
@@ -70,9 +70,8 @@ class Inflector
      // for(int i = 0; i < Inflector::singularize_rule_size; i ++)
      for(int i = 0; i < 1; i ++)
      {
-       regex reg(singularize_pattern_replacement[i].first);
-       // cout << singularize_pattern_replacement[i].first << endl;
-       regex_replace(word, reg, string("alkfdjk"));
+       pcrecpp::RE re(singularize_pattern_replacement[i].first);
+       re.Replace(singularize_pattern_replacement[i].second, &word);
      }
      cout << word<<endl;
 
