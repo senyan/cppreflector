@@ -1,2 +1,2 @@
 all:
-	g++ inflections.cpp -std=c++0x -lpcrecpp
+	g++ inflections.cpp -lpcrecpp
